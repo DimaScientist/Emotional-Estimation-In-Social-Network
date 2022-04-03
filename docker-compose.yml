@@ -2,11 +2,11 @@ version: '3.0'
 
 
 services:
-  node01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
-    container_name: node01
+  es_node01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    container_name: es_node01
     environment:
-      - node.name=node01
+      - node.name=es_node01
       - cluster.name=es-cluster-7
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
@@ -17,23 +17,37 @@ services:
     volumes:
       - es-data01:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
+      - "9200:9200"
     networks:
       - es-network
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.14.1
+    image: docker.elastic.co/kibana/kibana:7.11.0
+    container_name: nir_kibana
     environment:
-      ELASTICSEARCH_HOSTS: http://node01:9200
+      ELASTICSEARCH_HOSTS: http://es_node01:9200
     ports:
-      - 5601:5601
+      - "5601:5601"
     networks:
       - es-network
     depends_on:
-      - node01
+      - es_node01
+
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-storage:/data
+    networks:
+      - es-network
 
 volumes:
   es-data01:
+    driver: local
+  minio-storage:
     driver: local
 
 networks:

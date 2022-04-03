@@ -10,3 +10,6 @@ class Config:
     SECURITY_KEY: str = os.getenv("SECURITY_KEY")
     SERVICE_KEY: str = os.getenv("SERVICE_KEY")
     APP_ID: int = int(os.getenv("APP_ID"))
+
+    MINIO_USER = os.getenv("MINIO_USER", "minioadmin")
+    MINIO_PASSWORD = os.getenv("MINIO_PASSWORD", "minioadmin")
