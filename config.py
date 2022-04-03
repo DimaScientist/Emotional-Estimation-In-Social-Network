@@ -7,8 +7,7 @@ class Config:
     ELASTIC_HOST: str = os.getenv("ELASTIC_HOST", "localhost")
     ELASTIC_PORT: int = int(os.getenv("ELASTIC_PORT", 9200))
 
-    SECURITY_KEY: str = os.getenv("SECURITY_KEY")
-    SERVICE_KEY: str = os.getenv("SERVICE_KEY")
+    ACCESS_TOKEN: str = os.getenv("ACCESS_TOKEN")
     APP_ID: int = int(os.getenv("APP_ID"))
 
     MINIO_USER = os.getenv("MINIO_USER", "minioadmin")
