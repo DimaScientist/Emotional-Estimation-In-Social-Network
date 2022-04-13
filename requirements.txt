@@ -13,4 +13,3 @@ keras==2.8.0
 python-dotenv==0.20.0
 loguru==0.6.0
 minio==7.1.5
-vk-api==11.9.7
