@@ -5,9 +5,6 @@ from pathlib import Path
 
 class Config:
 
-    ELASTIC_HOST: str = os.getenv("ELASTIC_HOST", "localhost")
-    ELASTIC_PORT: int = int(os.getenv("ELASTIC_PORT", 9200))
-
     ACCESS_TOKEN: str = os.getenv("ACCESS_TOKEN")
 
     MINIO_USER = os.getenv("MINIO_USER", "minioadmin")
