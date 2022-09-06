@@ -9,7 +9,7 @@ from src import configurations
 from src.schemas import PostInfo, PostInfoList, SocialGroupInfo
 
 
-POST_NUMBER = 10000
+POST_NUMBER = 100000
 
 
 def get_group_info(group_name: str) -> SocialGroupInfo:

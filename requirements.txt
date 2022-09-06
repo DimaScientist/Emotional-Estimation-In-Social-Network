@@ -16,3 +16,4 @@ minio==7.1.5
 bs4==0.0.1
 pydantic==1.8.2
 dostoevsky==0.6.0
+wordcloud==1.8.2.2
